@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+
+
   return (
     <nav class=" navbar navbar-expand-lg border-bottom  sticky-top bg-white mb-5 ">
       <div
-        class="container-xl "
+        className="container-xl "
         style={{ backgroundColor: "white", height: "50px" }}
       >
         <div className="row m-auto ">
@@ -30,7 +32,7 @@ function Navbar() {
           <div className="d-flex" role="search">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li class="nav-item ms-4">
-                <Link class="nav-link mt-md-4 mt-lg-0" aria-current="page" to="/signup">
+                <Link class="nav-link mt-md-4 mt-lg-0 active" aria-current="page" to="/signup">
                   Signup
                 </Link>
               </li>
