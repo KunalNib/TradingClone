@@ -14,3 +14,18 @@
   text-decoration: none;
   color: #387ed1;
 }
+
+#supportHero{
+  background-color: rgb(56, 126, 209);
+  color: white;
+}
+
+#supportWrapper{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+#supportHero a{
+  color: white;
+  font-size: 1.1rem;
+}

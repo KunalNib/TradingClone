@@ -5,7 +5,7 @@ function Navbar() {
 
 
   return (
-    <nav class=" navbar navbar-expand-lg border-bottom  sticky-top bg-white mb-5 ">
+    <nav class=" navbar navbar-expand-lg border-bottom  sticky-top bg-white  ">
       <div
         className="container-xl "
         style={{ backgroundColor: "white", height: "50px" }}

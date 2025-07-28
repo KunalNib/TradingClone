@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero() {
   return (
-    <div className="container-lg mb-5">
+    <div className="container-lg mb-5 mt-5">
       <div className="mb-5">
         <div className="mx-auto text-muted">
           <h4 className="text-center">
