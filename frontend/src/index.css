@@ -1,0 +1,31 @@
+.nav-link{
+  font-size: 1.1rem
+}
+
+.footer-link{
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+}
+.para{
+  font-size: 0.7rem;
+}
+
+.extlink{
+  text-decoration: none;
+  color: #387ed1;
+}
+
+#supportHero{
+  background-color: rgb(56, 126, 209);
+  color: white;
+}
+
+#supportWrapper{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+#supportHero a{
+  color: white;
+  font-size: 1.1rem;
+}
