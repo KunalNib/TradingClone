@@ -27,8 +27,8 @@ const Positions = () => {
                 <td>{position.product}</td>
                 <td>{position.name}</td>
                 <td>{position.qty}</td>
-                <td>{position.price}</td>
                 <td>{position.avg.toFixed(2)}</td>
+                <td>{position.price}</td>
                 <td className={profClass}>{(curVal-position.avg*position.qty).toFixed(2)}</td>
                 <td className={dayClass}>{position.day}</td>
               </tr>

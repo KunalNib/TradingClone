@@ -20,11 +20,11 @@ export default function WatchListItem({stock}){
                 <p className={stock.isDown? "down":"up"}>
                     {stock.name}
                 </p>
-                {!showListActions && <div className="item-info">
+                <div className="item-info">
                     <span className='percent'>{stock.percent}</span>
                     {stock.isDown?(<KeyboardArrowDownIcon className="down" />):<KeyboardArrowUpIcon  className="up"/>}
                     <span className='price'>{stock.price}</span>
-                </div>}
+                </div>
             </div>
             {showListActions && <WatchListActions uid={stock.name}/>}
         </li>
@@ -33,8 +33,8 @@ export default function WatchListItem({stock}){
 
 const WatchListActions=({uid})=>{
   return(
-    <span className="actions">
-      <span>
+    <span className="actions ">
+      <span className='bg-white'>
         <Tooltip
         title="Buy (B)"
         placement="top"
