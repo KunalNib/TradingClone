@@ -2,7 +2,7 @@ import React from "react";
 
 const Summary = () => {
   return (
-    <>
+    <div className="mt-3 ms-md-5 ps-md-5">
       <div className="username">
         <h6>Hi, User!</h6>
         <hr className="divider" />
@@ -57,7 +57,7 @@ const Summary = () => {
         </div>
         <hr className="divider" />
       </div>
-    </>
+    </div>
   );
 };
 

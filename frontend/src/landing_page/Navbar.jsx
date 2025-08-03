@@ -14,9 +14,9 @@ function Navbar() {
           <Link class="navbar-brand  col-10  " to="/">
             <img src="/media/logo.svg" style={{ width: "25%" }} />
           </Link>
-          <div className="col-1 ">
+          <div className="col-1">
             <button
-            class="navbar-toggler ms-4  "
+            class="navbar-toggler ms-4 "
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -24,7 +24,7 @@ function Navbar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon "></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
           </div>
         </div>

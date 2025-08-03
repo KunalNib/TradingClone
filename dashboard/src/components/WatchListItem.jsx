@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import WatchList from './WatchList';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-
+import GeneralContext from './GeneralContext';
 import { Grow, Tooltip } from '@mui/material';
 export default function WatchListItem({stock}){
+
     const [showListActions,setshowListActions]=useState(false);
     const handleMouseEnter=(e)=>{
         setshowListActions(true);
@@ -32,6 +33,8 @@ export default function WatchListItem({stock}){
 }
 
 const WatchListActions=({uid})=>{
+
+    const { openBuyWindow,openSellWindow } = useContext(GeneralContext); 
   return(
     <span className="actions ">
       <span className='bg-white'>
@@ -41,7 +44,9 @@ const WatchListActions=({uid})=>{
         arrow 
         slots={{transition:Grow}}
         >
-            <button className='buy'>Buy</button>
+            <button className='buy' onClick={()=>{
+                openBuyWindow(uid);
+            }}>Buy</button>
         </Tooltip>
         <Tooltip
         title="Sell (S)"
@@ -49,7 +54,9 @@ const WatchListActions=({uid})=>{
         arrow 
         slots={{transition:Grow}}
         >
-            <button className='sell'>Sell</button>
+            <button className='sell' onClick={()=>{
+                openSellWindow(uid);
+            }}>Sell</button>
         </Tooltip>
         <Tooltip
         title="Analytics (A)"

@@ -17,7 +17,7 @@ const WatchList = () => {
         
       </div>
       <span className="counts"> {watchlist.length} / 50</span>
-      <ul className="list">
+        <ul className="list">
         {watchlist.map((stock,index)=>{
           return <WatchListItem stock={stock} key={index} />;
         })}
