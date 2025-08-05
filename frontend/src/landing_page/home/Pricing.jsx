@@ -12,7 +12,7 @@ function Pricing() {
           </p>
           <div className="mt-5 fs-5">
               <a href="#" style={{ textDecoration: "none" }}>
-                See pricing <i class="fa-solid fa-arrow-right-long"></i>
+                See pricing <i className="fa-solid fa-arrow-right-long"></i>
               </a>
             </div>
         </div>

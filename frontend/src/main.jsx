@@ -11,10 +11,14 @@ import Navbar from './landing_page/Navbar';
 import Footer from './landing_page/Footer';
 import AboutPage from './landing_page/about/AboutPage';
 import NotFound from './landing_page/NotFound';
+import Login from "./landing_page/LoginPage"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <Navbar />
+  <ToastContainer/>
   <Routes>
     <Route path="/" element={<HomePage/>} />
     <Route path="/pricing" element={<PricingPage />} />
@@ -22,6 +26,7 @@ createRoot(document.getElementById('root')).render(
     <Route path="/products" element={<ProductPage />} />
     <Route path="/support" element={<SupportPage />} />
     <Route path="/about" element={<AboutPage />} />
+    <Route path="/login" element={<Login />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
   <Footer />

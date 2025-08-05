@@ -6,13 +6,20 @@ const mongoose = require("mongoose");
 const { HoldingModel } = require("./models/HoldingModel");
 const { PositionModel } = require("./models/PositionModel");
 const { OrderModel } = require("./models/OrderModel");
+const { Signup, Login } = require("./Controllers/AuthController");
+const cookieParser = require("cookie-parser");
+const { userVerification } = require("./Middlewares/AuthMiddleware");
 
 const PORT = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGO_URL;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5174'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 main()
   .then(() => {
@@ -26,10 +33,14 @@ async function main() {
   await mongoose.connect(mongoUrl);
 }
 
+
+app.post("/",userVerification)
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingModel.find({});
   res.json(allHoldings);
 });
+
 app.get("/allPositions", async (req, res) => {
   let allPositions = await PositionModel.find({});
   res.json(allPositions);
@@ -57,6 +68,9 @@ app.post("/updateHoldings", async (req, res) => {
   res.send("Successful");
 });
 
+app.post("/signup",Signup);
+app.post("/login",Login);
+
 app.post("/BuyOrder", async (req, res) => {
   let newOrder = new OrderModel({
     name: req.body.name,
@@ -67,6 +81,7 @@ app.post("/BuyOrder", async (req, res) => {
   newOrder.save();
   res.send("Order Saved!");
 });
+
 
 app.post("/SellOrder", async (req, res) => {
   let name=req.body.name;

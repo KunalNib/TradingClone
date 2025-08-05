@@ -29,3 +29,8 @@
   color: white;
   font-size: 1.1rem;
 }
+.inputs{
+  border-radius:10px;
+  border: 2px solid gray;
+  width: 300px;
+}

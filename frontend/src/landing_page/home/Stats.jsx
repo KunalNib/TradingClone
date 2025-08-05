@@ -53,13 +53,13 @@ function Stats() {
               className="text-primary fs-5 col-4 "
               style={{ textDecoration: "none" }}
             >
-              Explore our products <i class="fa-solid fa-arrow-right-long"></i>{" "}
+              Explore our products <i className="fa-solid fa-arrow-right-long"></i>{" "}
             </a>
             <a href="#"
               className="text-primary fs-5 col-6 "
               style={{ textDecoration: "none" }}
             >
-              Try Kite demo <i class="fa-solid fa-arrow-right-long"></i>{" "}
+              Try Kite demo <i className="fa-solid fa-arrow-right-long"></i>{" "}
             </a>
           </div>
         </div>

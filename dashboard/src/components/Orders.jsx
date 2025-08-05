@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const Orders = () => {
   const [Orders, setOrders] = useState([]);
-  // useEffect(()=>{
-  //   axios.get("http://localhost:3000/allOrders").then((res)=>{
-  //     setOrders(res.data);
-  //   })
-  // })
+  useEffect(()=>{
+    axios.get("http://localhost:3000/allOrders").then((res)=>{
+      setOrders(res.data);
+    })
+  })
   return (
     <div className="order-table p-5 pt-0">
-      {(Orders.length==true)&& (
+      {(Orders.length) && (
         <div className="mt-0">
           <table className="row ms-2">
             <tr className="row ms-1">
@@ -42,7 +42,7 @@ const Orders = () => {
         </div>
       )}
       <div className="no-orders">
-        {!Orders.length && (
+        {(Orders.length==false) && (
           <div>
             <p>You haven't placed any orders today</p>
             <Link to="/" className="btn ms-5">

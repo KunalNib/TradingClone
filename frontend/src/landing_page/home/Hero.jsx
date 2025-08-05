@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 function Hero() {
     return (
@@ -10,7 +10,7 @@ function Hero() {
                     Invest in everything
                 </h1>
                 <p className=' mt-2 mb-3 fs-5 '>Online platform to invest in stocks, derivatives, mutual funds, ETFs, bonds, and more.</p>
-                <button className='btn mb-5 btn-primary mt-3 mx-auto fs-5 pb-2 col-5 col-sm-3 col-md-3 col-lg-2'>Sign up now</button>
+                <Link to="/signup" className='btn mb-5 btn-primary mt-3 mx-auto fs-5 pb-2 col-5 col-sm-3 col-md-3 col-lg-2'>Sign up now</Link>
             </div>
         </div>
     );
