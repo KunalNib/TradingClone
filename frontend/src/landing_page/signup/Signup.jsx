@@ -90,7 +90,7 @@ function Signup() {
         <div className="mt-5">
           <h2>Signup now</h2>
           <p>Or track your existing application</p>
-          <form className="row g-3 was-validated" onSubmit={handleSubmit}>
+          <form className="row g-3 " onSubmit={handleSubmit}>
             <div className="">
               <div className="col-4 mx-auto mt-3">
                 <label htmlFor="validationFormCheck1" className="form-label ">
