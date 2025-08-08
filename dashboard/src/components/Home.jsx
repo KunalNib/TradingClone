@@ -7,7 +7,6 @@ import { toast, ToastContainer } from "react-toastify";
 
 const Home = () => {
   const [username, setUsername] = useState("");
-  const hasWelcomed = useRef(false);
   useEffect(() => {
     axios
       .get("http://localhost:3000/auth", {
@@ -16,10 +15,12 @@ const Home = () => {
       .then((res) => {
         if (res.data.loggedIn) {
           setUsername(res.data.user);
-          if (!hasWelcomed.current) {
-            toast(`Welcome ${res.data.user}`, { position: "top-left" });
-            hasWelcomed.current = true;
-          }
+          //used session storage for setting the welcome user message only one time
+
+          if (!sessionStorage.getItem("welcomed")) {
+          toast(`Welcome ${res.data.user}`, { position: "top-left" });
+          sessionStorage.setItem("welcomed", "true");
+        }
         } else {
           toast.error("You are not Logged In,please log in");
           window.location.href = "http://localhost:5174/login";

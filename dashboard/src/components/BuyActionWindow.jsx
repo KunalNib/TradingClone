@@ -7,19 +7,20 @@ const BuyActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
 
-  const handleBuyClick = (e) => {
+  const handleBuyClick = async  (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/BuyOrder", {
+    await axios.post("http://localhost:3000/BuyOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
       mode: "BUY",
-    });
-    axios.post("http://localhost:3000/updateHoldings",{
+      
+    },{withCredentials: true });
+     await axios.post("http://localhost:3000/updateHoldings",{
       name:uid,
       qty:stockQuantity,
       price:stockPrice
-    })
+    },{withCredentials: true })
     console.log("requestSent");
     location.reload();
     closeBuyWindow();

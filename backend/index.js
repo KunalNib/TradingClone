@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const { userVerification } = require("./Middlewares/AuthMiddleware");
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("./models/UserModel");
+const authMiddleware = require("./Middlewares/AuthMiddleware");
 
 const PORT = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGO_URL;
@@ -41,57 +42,67 @@ async function main() {
   await mongoose.connect(mongoUrl);
 }
 
-app.post("/", userVerification);
 
-app.get("/allHoldings", async (req, res) => {
-  let allHoldings = await HoldingModel.find({});
-  res.json(allHoldings);
+app.get("/auth",authMiddleware, (req, res) => {
+  res.json({ loggedIn: true, user: req.user.username });
 });
+
+
+app.get("/allHoldings",authMiddleware, async (req, res) => {
+  let allHoldings = await HoldingModel.find({owner:req.user._id});
+
+  res.json(allHoldings||[]);
+});
+
 
 app.get("/allPositions", async (req, res) => {
   let allPositions = await PositionModel.find({});
   res.json(allPositions);
 });
 
-app.post("/updateHoldings", async (req, res) => {
-  const name = req.body.name;
+app.post("/updateHoldings",authMiddleware, async (req, res) => {
+  try{
+    const name = req.body.name;
   const price = req.body.price;
   const qty = req.body.qty;
-  let existingData = await HoldingModel.findOne({ name: name });
-  if (existingData && price == existingData.price) {
+  let existingData = await HoldingModel.findOne({ name: name,owner:req.user.id });
+  if (existingData && Number(price) === existingData.price) {
     existingData.qty += qty;
-    existingData.save();
+    await existingData.save();
   } else {
     let newHolding = new HoldingModel({
       name: name,
       qty: qty,
-      avg: existingData.avg || price,
+      avg: existingData?existingData.avg:price,
       price: price,
-      net: existingData.net || "0",
-      day: existingData.day || "0",
+      net: existingData?existingData.net:"0",
+      day: existingData?existingData.day:"0",
+      owner:req.user._id
     });
-    newHolding.save();
+    await newHolding.save();
   }
   res.send("Successful");
+  }catch(err){
+    console.log(err);
+  }
 });
 
 app.post("/signup", Signup);
 app.post("/login", Login);
 
-app.post("/BuyOrder", async (req, res) => {
-  console.log("order");
+app.post("/BuyOrder",authMiddleware, async (req, res) => {
   let newOrder = new OrderModel({
     name: req.body.name,
     qty: req.body.qty,
     price: req.body.price,
     mode: req.body.mode,
+    owner:req.user.id
   });
   newOrder.save();
-  console.log("Hello");
   res.send("Order Saved!");
 });
 
-app.post("/SellOrder", async (req, res) => {
+app.post("/SellOrder",authMiddleware, async (req, res) => {
   let name = req.body.name;
   let price = req.body.price;
   let sellOrder = new OrderModel({
@@ -99,10 +110,11 @@ app.post("/SellOrder", async (req, res) => {
     qty: req.body.qty,
     price: price,
     mode: req.body.mode,
+    owner:req.user.id
   });
 
-  let Holding = await HoldingModel.findOne({ name, price });
-  if (!Holding) return res.send("No Stock found");
+  let Holding = await HoldingModel.findOne({ name, price,owner:req.user.id });
+  if (!Holding) return res.json({status:false,message:"No Stock found"});
   if (Holding.qty == 1) {
     await HoldingModel.deleteOne({ name, price });
   } else {
@@ -110,26 +122,13 @@ app.post("/SellOrder", async (req, res) => {
     await Holding.save();
   }
   await sellOrder.save();
-  res.send("Order Saved");
+  res.json({status:true,message:"Order Saved"});
 });
 
-app.get("/allOrders", async (req, res) => {
-  let allOrders = await OrderModel.find({});
+app.get("/allOrders",authMiddleware, async (req, res) => {
+  let allOrders = await OrderModel.find({owner:req.user.id});
   res.json(allOrders);
 });
-
-app.get("/auth", (req, res) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ loggedIn: false });
-
-  jwt.verify(token, process.env.TOKEN_KEY, async (err, decoded) => {
-    if (err) return res.status(403).json({ loggedIn: false });
-    const user = await UserModel.findById(decoded.id).select("username");
-    if (!user) return res.status(404).json({ loggedIn: false });
-    res.json({ loggedIn: true, user: user.username });
-  });
-});
-
 
 app.listen(PORT, () => {
   console.log("app is listening on port 3000");

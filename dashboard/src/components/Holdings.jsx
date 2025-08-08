@@ -4,7 +4,7 @@ import axios from "axios";
 const Holdings = () => {
   const [allHoldings, setallHoldings] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/allHoldings").then((res) => {
+    axios.get("http://localhost:3000/allHoldings",{ withCredentials: true }).then((res) => {
       setallHoldings(res.data);
     });
   }, []);
