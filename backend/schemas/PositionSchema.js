@@ -8,7 +8,11 @@ const PositionSchema=new mongoose.Schema({
     price:Number,
     net:String,
     day:String,
-    isLoss:Boolean
+    isLoss:Boolean,
+    owner:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        }
 })
 
 module.exports= PositionSchema;

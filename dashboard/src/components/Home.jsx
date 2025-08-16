@@ -16,7 +16,6 @@ const Home = () => {
         if (res.data.loggedIn) {
           setUsername(res.data.user);
           //used session storage for setting the welcome user message only one time
-
           if (!sessionStorage.getItem("welcomed")) {
           toast(`Welcome ${res.data.user}`, { position: "top-left" });
           sessionStorage.setItem("welcomed", "true");

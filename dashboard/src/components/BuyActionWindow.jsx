@@ -37,7 +37,7 @@ const BuyActionWindow = ({ uid }) => {
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLongTitle">
+            <h5 className="modal-title profit" id="exampleModalLongTitle">
               Buy Stock for {uid}
             </h5>
           </div>

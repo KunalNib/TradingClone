@@ -77,6 +77,7 @@ function Login() {
               <label className="form-label">Password</label>
               <input
                 className="form-control ps-4"
+                type="password"
                 placeholder="password"
                 name="password"
                 value={inputVal.password}
