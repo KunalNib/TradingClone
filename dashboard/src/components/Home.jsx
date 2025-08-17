@@ -34,7 +34,7 @@ const Home = () => {
     <>
       <TopBar />
       <ToastContainer />
-      <Dashboard />
+      <Dashboard username={username}/>
     </>
   );
 };
