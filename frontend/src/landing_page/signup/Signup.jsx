@@ -51,7 +51,7 @@ function Signup() {
         return handleError("all fields are required");
       }
       const { data } = await axios.post(
-        "http://localhost:3000/signup",
+        "https://tradingclone.onrender.com/signup",
         {
           ...inputValue,
         },
@@ -61,7 +61,7 @@ function Signup() {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:5173/";
+          window.location.href = "https://zerodhaclone122.netlify.app/";
         }, 1000);
       } else {
         handleError(message);

@@ -29,7 +29,7 @@ function Login() {
     e.preventDefault();
     try {
       
-      const {data}=await axios.post("http://localhost:3000/login",
+      const {data}=await axios.post("https://tradingclone.onrender.com/login",
         {
           ...inputVal,
         },
@@ -39,7 +39,7 @@ function Login() {
       if(success){
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:5173/";
+          window.location.href = "https://zerodhaclone122.netlify.app/";
         }, 500);
       }
       else{
