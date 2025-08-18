@@ -9,7 +9,7 @@ const Home = () => {
   const [username, setUsername] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth", {
+      .get("https://tradingclone.onrender.com/auth", {
         withCredentials: true,
       })
       .then((res) => {

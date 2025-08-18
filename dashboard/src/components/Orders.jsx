@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Orders = () => {
   const [Orders, setOrders] = useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:3000/allOrders",{withCredentials:true}).then((res)=>{
+    axios.get("https://tradingclone.onrender.com/allOrders",{withCredentials:true}).then((res)=>{
       setOrders(res.data);
     })
   })

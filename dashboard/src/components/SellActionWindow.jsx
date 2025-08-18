@@ -8,7 +8,7 @@ const SellActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleSellClick = () => {
-    axios.post("http://localhost:3000/SellOrder", {
+    axios.post("https://tradingclone.onrender.com/SellOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

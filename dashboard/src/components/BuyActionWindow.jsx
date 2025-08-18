@@ -9,14 +9,14 @@ const BuyActionWindow = ({ uid }) => {
 
   const handleBuyClick = async  (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3000/BuyOrder", {
+    await axios.post("https://tradingclone.onrender.com/BuyOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
       mode: "BUY",
       
     },{withCredentials: true });
-     await axios.post("http://localhost:3000/updateHoldings",{
+     await axios.post("https://tradingclone.onrender.com/updateHoldings",{
       name:uid,
       qty:stockQuantity,
       price:stockPrice

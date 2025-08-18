@@ -5,7 +5,7 @@ import { VerticalChart } from "./VerticalChart";
 const Holdings = () => {
   const [allHoldings, setallHoldings] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/allHoldings",{ withCredentials: true }).then((res) => {
+    axios.get("https://tradingclone.onrender.com/allHoldings",{ withCredentials: true }).then((res) => {
       setallHoldings(res.data);
     });
   }, []);
