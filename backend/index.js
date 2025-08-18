@@ -24,7 +24,7 @@ app.use(
   cors({
     origin: [
       "https://tradingclone.onrender.com",
-      "https://zerodhaclone122.netlify.app",
+      "https://zerodaclonelanding122.netlify.app",
       "https://zerodhaclone122.netlify.app",
     ],
     credentials: true,
