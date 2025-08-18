@@ -93,13 +93,9 @@ function Signup() {
           <form className="row g-3 " onSubmit={handleSubmit}>
             <div className="">
               <div className="col-4 mx-auto mt-3">
-                <label htmlFor="validationFormCheck1" className="form-label ">
-                  Email
-                </label>
-
                 <input
                   type="email"
-                  className="form-control text-center"
+                  className="form-control ps-4"
                   id="validationFormCheck1"
                   placeholder="Email"
                   name="email"
@@ -112,13 +108,11 @@ function Signup() {
             </div>
             <div className="">
               <div className="col-4 mx-auto mt-3">
-                <label htmlFor="validationFormCheck2" className="form-label">
-                  Username
-                </label>
+                
 
                 <input
                   type="text"
-                  className="form-control text-center"
+                  className="form-control ps-4"
                   id="validationFormCheck2"
                   placeholder="Username"
                   value={inputValue.username}
@@ -131,13 +125,10 @@ function Signup() {
             </div>
             <div className="">
               <div className="col-4 mx-auto mt-3">
-                <label htmlFor="validationFormCheck3" className="form-label">
-                  Password
-                </label>
 
                 <input
                   type="password"
-                  className="form-control text-center"
+                  className="form-control ps-4"
                   id="validationFormCheck3"
                   placeholder="Password"
                   name="password"

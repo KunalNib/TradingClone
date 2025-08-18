@@ -843,5 +843,10 @@ hr {
   background-color: rgb(212, 212, 212);
 }
 
-
-
+.DropDownProfile{
+  position: absolute;
+  top: 4.5rem;
+  right: 0rem;
+  background-color: white;
+  cursor: pointer;
+}

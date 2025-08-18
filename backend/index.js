@@ -34,6 +34,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+  });
+  return res.json({ message: "Logged out successfully" });
+});
+
+
 main()
   .then(() => {
     console.log("connection successful");

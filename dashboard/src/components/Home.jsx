@@ -32,7 +32,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <TopBar />
+      <TopBar username={username} />
       <ToastContainer />
       <Dashboard username={username}/>
     </>
