@@ -7,7 +7,7 @@ function DropDownProfile() {
         axios.post("https://tradingclone.onrender.com/logout",{},{withCredentials:true}).then((res)=>{
             toast.success(res.data.message);
             setTimeout(()=>{
-                window.location.href = "http://localhost:5174/login";
+                window.location.href = "https://zerodaclonelanding122.netlify.app/login";
             },500)
         })
     }

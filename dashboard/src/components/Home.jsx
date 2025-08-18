@@ -22,12 +22,12 @@ const Home = () => {
         }
         } else {
           toast.error("You are not Logged In,please log in");
-          window.location.href = "http://localhost:5174/login";
+          window.location.href = "https://zerodaclonelanding122.netlify.app/login";
         }
       })
       .catch(() => {
         toast.error("You are not Logged In,please log in");
-        window.location.href = "http://localhost:5174/login";
+        window.location.href = "https://zerodaclonelanding122.netlify.app/login";
       });
   }, []);
   return (

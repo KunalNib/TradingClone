@@ -23,8 +23,8 @@ const mongoUrl = process.env.MONGO_URL;
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "http://localhost:5174",
+      "https://tradingclone.onrender.com",
+      "https://zerodhaclone122.netlify.app",
       "https://zerodhaclone122.netlify.app",
     ],
     credentials: true,

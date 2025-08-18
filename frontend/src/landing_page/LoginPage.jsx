@@ -39,7 +39,7 @@ function Login() {
       if(success){
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "https://zerodhaclone122.netlify.app/";
+          window.location.href = "https://zerodhaclone122.netlify.app";
         }, 500);
       }
       else{
