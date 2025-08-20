@@ -23,7 +23,6 @@ const mongoUrl = process.env.MONGO_URL;
 app.use(
   cors({
     origin: [
-      "https://tradingclone.onrender.com",
       "https://zerodaclonelanding122.netlify.app",
       "https://zerodhaclone122.netlify.app",
     ],
