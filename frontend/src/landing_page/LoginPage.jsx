@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Loader from "./Loader";
 function Login() {
+
+
+  const[loading,setLoading]=useState(false);
   const [inputVal, setInputVal] = useState({
     email: "",
     password: "",
@@ -27,6 +31,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       
       const {data}=await axios.post("https://tradingclone.onrender.com/login",
@@ -45,6 +50,7 @@ function Login() {
       else{
         handleError(message);
       }
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -57,6 +63,7 @@ function Login() {
 
   return (
     <>
+    <Loader value={loading}></Loader>
       <form onSubmit={handleSubmit}>
         <div className="row">
           <h3 className="text-center text-muted mb-3 mt-5"> Login to Kite</h3>

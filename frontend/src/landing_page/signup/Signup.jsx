@@ -5,10 +5,10 @@ import OpenAccount from "../OpenAccout";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+import Loader from "../Loader";
 
 function Signup() {
-  const navigate = useNavigate();
+  const[loading,setLoading]=useState(false);
   const [inputValue, setInputValue] = useState({
     email: "",
     username: "",
@@ -42,6 +42,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (
         inputValue.password == "" ||
@@ -75,10 +76,12 @@ function Signup() {
       password: "",
       username: "",
     });
+    setLoading(false);
   };
-
+  
   return (
     <>
+    <Loader value={loading}></Loader>
       <div className="container-lg text-center mt-5">
         <p>&nbsp;</p>
         <h2>Open a free demat and trading account online</h2>
@@ -108,8 +111,6 @@ function Signup() {
             </div>
             <div className="">
               <div className="col-4 mx-auto mt-3">
-                
-
                 <input
                   type="text"
                   className="form-control ps-4"
@@ -125,7 +126,6 @@ function Signup() {
             </div>
             <div className="">
               <div className="col-4 mx-auto mt-3">
-
                 <input
                   type="password"
                   className="form-control ps-4"
@@ -139,10 +139,7 @@ function Signup() {
               </div>
               <div className="invalid-feedback">please Enter password</div>
             </div>
-            <button
-              className="btn btn-primary col-2 mx-auto"
-              type="submit"
-            >
+            <button className="btn btn-primary col-2 mx-auto" type="submit">
               Signup
             </button>
           </form>
